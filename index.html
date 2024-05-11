@@ -1,144 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>MB|Security Researcher</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
-    <script src="https://kit.fontawesome.com/19aa01650a.js" type="ca4c2b85da0344fcf049080d-text/javascript"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <title>MBK | SWE</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <script
+      src="https://kit.fontawesome.com/19aa01650a.js"
+      type="ca4c2b85da0344fcf049080d-text/javascript"
+    ></script>
     <style type="text/css">
-        @import 'https://fonts.googleapis.com/css?family=Poiret+One';
-        @import 'https://fonts.googleapis.com/css?family=Josefin+Sans:300';
+      @import "https://fonts.googleapis.com/css?family=Poiret+One";
+      @import "https://fonts.googleapis.com/css?family=Josefin+Sans:300";
 
-        i{
-            color:tomato;
-        }
+      i {
+        color: tomato;
+      }
 
-        html, body {
-        font-family: 'Poiret One', monospace;
-        background: #191919;
+      html,
+      body {
+        font-family: "Poiret One", monospace;
+        background: #4d4c4c;
         height: 100%;
         align-self: center;
-        }
-        .container {
+      }
+      .container {
         height: 100%;
         width: 100%;
         justify-content: center;
         align-items: center;
         display: flex;
         flex-direction: column;
-        }
-        .text {
-        font-weight: 100;
-        font-size: 38px;
-        color: #ffffff;
-        }
-        .dud {
+      }
+      .text {
+        font-weight: 800;
+        font-size: 40px;
+        color: #020202;
+      }
+      .dud {
         color: #757575;
-        }
-        a{
+      }
+      a {
         text-decoration: none;
         color: white;
-        font-family: 'Josefin Sans' , sans-serif;
-        font-size: 17px;
-        }
+        font-family: "Josefin Sans", sans-serif;
+        font-size: 20px;
+      }
     </style>
 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120793174-3" type="ca4c2b85da0344fcf049080d-text/javascript"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-120793174-3"
+      type="ca4c2b85da0344fcf049080d-text/javascript"
+    ></script>
     <script type="ca4c2b85da0344fcf049080d-text/javascript">
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'UA-120793174-3');
-</script>
-</head>
-<body>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-120793174-3');
+    </script>
+  </head>
+  <body>
     <div class="container">
-    <div class="text"></div>
-    <br>
-    <div align="center">
-        <h2><font color="#999999" size="5">Security Researcher</font></h2>
-        <br>
-    </div>
-    <div align="center">
+      <div class="text"></div>
+      <br />
+      <div align="center">
+        <h2>
+          <font color="#999999" size="5">SWE | Cybersecurity Enthusiast</font>
+        </h2>
+        <br />
+      </div>
+      <div align="center">
         <i class="far fa-envelope tcolor"></i>
-        <a href="#" target="_top" style="text-decoration: none"><span>mbilalkhan500@gmail.com</span></a>
+        <a
+          href="mailto:mbilalkh.usa@gmail.com"
+          target="_top"
+          style="text-decoration: none"
+        >
+          <span>mbilalkh.usa@gmail.com</span>
+        </a>
         <font color="white">&nbsp;|&nbsp;</font>
         <i class="fas fa-link tcolor"></i>
-        <a href="http://www.linkedin.com/in/mbilalkhan500" style="text-decoration: none" target="_blank">LINKEDIN</a>
+        <a
+          href="http://www.linkedin.com/in/mbilalkhan500"
+          style="text-decoration: none"
+          target="_blank"
+        >
+          <img
+            src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg"
+            alt="mbilalkhusa"
+            height="14"
+          />
+        </a>
+      </div>
     </div>
-    </div>
-</body>
+  </body>
 </html>
 
 <script>
-class TextScramble {
-  constructor(el) {
-    this.el = el;
-    this.chars = '!<>-_\\/[]{}â€”=+*^?#~________';
-    this.update = this.update.bind(this);
-  }
-  //----------------------SETFUNC----------------------------
-  setText(newText) {
-    const oldText = this.el.innerText;
-    const length = Math.max(oldText.length, newText.length);
-    const promise = new Promise(resolve => this.resolve = resolve);
-    this.queue = [];
-    for (let i = 0; i < length; i++) {
-      const from = oldText[i] || '';
-      const to = newText[i] || '';
-      const start = Math.floor(Math.random() * 40);
-      const end = start + Math.floor(Math.random() * 40);
-      this.queue.push({ from, to, start, end });
+  class TextScramble {
+    constructor(el) {
+      this.el = el;
+      this.chars = "!<>-_\\/[]{}â€”=+*^?#~________";
+      this.update = this.update.bind(this);
     }
-    cancelAnimationFrame(this.frameRequest);
-    this.frame = 0;
-    this.update();
-    return promise;
-  }
-  //----------------------UPDATE----------------------------
-  update() {
-    let output = '';
-    let complete = 0;
-    for (let i = 0, n = this.queue.length; i < n; i++) {
-      let { from, to, start, end, char } = this.queue[i];
-      if (this.frame >= end) {
-        complete++;
-        output += to;
-      } else if (this.frame >= start) {
-        if (!char || Math.random() < 0.28) {
-          char = this.randomChar();
-          this.queue[i].char = char;
+    //----------------------SETFUNC----------------------------
+    setText(newText) {
+      const oldText = this.el.innerText;
+      const length = Math.max(oldText.length, newText.length);
+      const promise = new Promise((resolve) => (this.resolve = resolve));
+      this.queue = [];
+      for (let i = 0; i < length; i++) {
+        const from = oldText[i] || "";
+        const to = newText[i] || "";
+        const start = Math.floor(Math.random() * 40);
+        const end = start + Math.floor(Math.random() * 40);
+        this.queue.push({ from, to, start, end });
+      }
+      cancelAnimationFrame(this.frameRequest);
+      this.frame = 0;
+      this.update();
+      return promise;
+    }
+    //----------------------UPDATE----------------------------
+    update() {
+      let output = "";
+      let complete = 0;
+      for (let i = 0, n = this.queue.length; i < n; i++) {
+        let { from, to, start, end, char } = this.queue[i];
+        if (this.frame >= end) {
+          complete++;
+          output += to;
+        } else if (this.frame >= start) {
+          if (!char || Math.random() < 0.28) {
+            char = this.randomChar();
+            this.queue[i].char = char;
+          }
+          output += `<span class="dud">${char}</span>`;
+        } else {
+          output += from;
         }
-        output += `<span class="dud">${char}</span>`;
+      }
+      this.el.innerHTML = output;
+      if (complete === this.queue.length) {
+        this.resolve();
       } else {
-        output += from;
+        this.frameRequest = requestAnimationFrame(this.update);
+        this.frame++;
       }
     }
-    this.el.innerHTML = output;
-    if (complete === this.queue.length) {
-      this.resolve();
-    } else {
-      this.frameRequest = requestAnimationFrame(this.update);
-      this.frame++;
+    //----------------------RANDOM----------------------------
+    randomChar() {
+      return this.chars[Math.floor(Math.random() * this.chars.length)];
     }
   }
-  //----------------------RANDOM----------------------------
-  randomChar() {
-    return this.chars[Math.floor(Math.random() * this.chars.length)];
-  }}
 
-const phrases = ['Muhammad Bilal'];
-const el = document.querySelector('.text');
-const fx = new TextScramble(el);
+  const phrases = ["Muhammad Bilal"];
+  const el = document.querySelector(".text");
+  const fx = new TextScramble(el);
 
-let counter = 0;
-//----------------------NEXT----------------------------
-const next = () => {
-  fx.setText(phrases[counter]).then(() => {
-    setTimeout(next, 800);
-  });
-  counter = (counter + 1) % phrases.length;
-};
-next();
+  let counter = 0;
+  //----------------------NEXT----------------------------
+  const next = () => {
+    fx.setText(phrases[counter]).then(() => {
+      setTimeout(next, 800);
+    });
+    counter = (counter + 1) % phrases.length;
+  };
+  next();
 </script>
