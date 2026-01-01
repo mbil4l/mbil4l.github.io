@@ -1,0 +1,311 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --terminal-green: #00ff41;
+  --terminal-green-dim: #00cc33;
+  --terminal-black: #0a0a0a;
+  --terminal-dark: #0d1117;
+  --terminal-gray: #1a1f26;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'JetBrains Mono', monospace;
+  background-color: var(--terminal-black);
+  color: var(--terminal-green);
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--terminal-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--terminal-green-dim);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--terminal-green);
+}
+
+/* CRT Scanlines Effect */
+.crt-overlay {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.15),
+    rgba(0, 0, 0, 0.15) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+}
+
+/* Moving Scanline */
+.scanline {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(0, 255, 65, 0.1),
+    transparent
+  );
+  animation: scanline 8s linear infinite;
+  z-index: 1001;
+}
+
+/* Screen Flicker */
+.screen-flicker {
+  animation: flicker 0.15s infinite;
+}
+
+/* Text Glow Effect */
+.text-glow {
+  text-shadow: 0 0 5px var(--terminal-green),
+               0 0 10px var(--terminal-green),
+               0 0 15px var(--terminal-green);
+}
+
+.text-glow-intense {
+  text-shadow: 0 0 10px var(--terminal-green),
+               0 0 20px var(--terminal-green),
+               0 0 30px var(--terminal-green),
+               0 0 40px var(--terminal-green);
+}
+
+/* Border Glow */
+.border-glow {
+  box-shadow: 0 0 5px var(--terminal-green),
+              0 0 10px var(--terminal-green),
+              inset 0 0 5px rgba(0, 255, 65, 0.1);
+}
+
+/* Terminal Card Styling */
+.terminal-card {
+  background: linear-gradient(
+    135deg,
+    rgba(13, 17, 23, 0.95) 0%,
+    rgba(26, 31, 38, 0.9) 100%
+  );
+  border: 1px solid rgba(0, 255, 65, 0.3);
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 255, 65, 0.15),
+              0 0 40px rgba(0, 255, 65, 0.05),
+              inset 0 0 60px rgba(0, 255, 65, 0.03);
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+.terminal-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--terminal-green),
+    transparent
+  );
+  opacity: 0.5;
+}
+
+.terminal-card:hover {
+  border-color: rgba(0, 255, 65, 0.5);
+  box-shadow: 0 0 30px rgba(0, 255, 65, 0.25),
+              0 0 60px rgba(0, 255, 65, 0.1),
+              inset 0 0 80px rgba(0, 255, 65, 0.05);
+}
+
+/* Input Styling */
+.terminal-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--terminal-green);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1rem;
+  caret-color: var(--terminal-green);
+  width: 100%;
+}
+
+.terminal-input::placeholder {
+  color: rgba(0, 255, 65, 0.3);
+}
+
+/* Cursor Animation */
+.cursor {
+  display: inline-block;
+  width: 10px;
+  height: 1.2em;
+  background-color: var(--terminal-green);
+  animation: cursor-blink 1s step-end infinite;
+  vertical-align: text-bottom;
+  margin-left: 2px;
+}
+
+/* ASCII Art Styling */
+.ascii-art {
+  font-size: 0.6rem;
+  line-height: 1.1;
+  white-space: pre;
+  color: var(--terminal-green);
+  text-shadow: 0 0 10px var(--terminal-green);
+}
+
+@media (min-width: 640px) {
+  .ascii-art {
+    font-size: 0.75rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .ascii-art {
+    font-size: 0.85rem;
+  }
+}
+
+/* Typing Effect */
+.typing-effect {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid var(--terminal-green);
+  animation: typing 0.5s steps(1) infinite;
+}
+
+/* Boot Sequence Line */
+.boot-line {
+  animation: boot-line 0.5s ease-out forwards;
+  opacity: 0;
+}
+
+/* Progress Bar */
+.progress-bar {
+  height: 4px;
+  background: var(--terminal-dark);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    var(--terminal-green-dim),
+    var(--terminal-green)
+  );
+  box-shadow: 0 0 10px var(--terminal-green);
+  transition: width 0.3s ease;
+}
+
+/* Link Styling */
+.terminal-link {
+  color: var(--terminal-green);
+  text-decoration: none;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.terminal-link:hover {
+  text-shadow: 0 0 10px var(--terminal-green);
+}
+
+.terminal-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--terminal-green);
+  box-shadow: 0 0 5px var(--terminal-green);
+  transition: width 0.3s ease;
+}
+
+.terminal-link:hover::after {
+  width: 100%;
+}
+
+/* Selection */
+::selection {
+  background: var(--terminal-green);
+  color: var(--terminal-black);
+}
+
+/* Command Highlight */
+.command-text {
+  color: #00d4ff;
+  font-weight: 600;
+}
+
+/* Error Text */
+.error-text {
+  color: #ff4444;
+  text-shadow: 0 0 10px #ff4444;
+}
+
+/* Success Text */
+.success-text {
+  color: var(--terminal-green);
+  text-shadow: 0 0 10px var(--terminal-green);
+}
+
+/* Amber/Warning Text */
+.warning-text {
+  color: #ffb000;
+  text-shadow: 0 0 10px #ffb000;
+}
+
+/* Matrix Rain Background - optional enhancement */
+.matrix-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.03;
+  background:
+    linear-gradient(var(--terminal-black) 0%, transparent 100%),
+    repeating-linear-gradient(
+      90deg,
+      var(--terminal-green) 0px,
+      var(--terminal-green) 1px,
+      transparent 1px,
+      transparent 30px
+    );
+}
